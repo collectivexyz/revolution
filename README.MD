@@ -1,6 +1,6 @@
 # collective revolution
 
-[NounsDAO](https://nouns.wtf/) emerged as the first feasible way to bootstrap an aligned digital-first community with money to get shit done.  
+[NounsDAO](https://nouns.wtf/) emerged as the first grass-roots way to bootstrap an aligned digital-first community with money to get shit done.  
 
 Nouns has been incredibly successful at both instantiating capital ($100mil to date) and curating a group of impressive members. However, the barriers to gaining ownership stake in the community leave much to be desired. The revolution protocol adopts and iterates on some key lessons from the nascent Internet society created through the Nouns protocol. 
 
