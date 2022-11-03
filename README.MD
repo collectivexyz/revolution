@@ -4,7 +4,7 @@
 
 Nouns has been incredibly successful at both instantiating capital ($100mil to date) and curating a group of impressive members. However, the barriers to gaining ownership stake in the community leave much to be desired. The revolution protocol adopts and iterates on some key lessons from the nascent Internet society created through the Nouns protocol. 
 
-The goal of the revolution protocol is collectively curated ownership distribution to people that result in an aligned on-chain social graph bootstrapped with capital (both IP and monetary) that is broadly accessible.
+The goal of the revolution protocol is collectively curated ownership distribution that results in an aligned on-chain social graph bootstrapped with capital (both IP and monetary) that is broadly accessible.
 
 How do we enable permissionless collective curation of both energy and people?
 
@@ -21,14 +21,14 @@ During the auction period, each day, for the 15th until the 21st day, one submis
 
 After the initial cold-start, the voting, submission, and auction periods will perpetually operate in tandem, feeding into each other. 
 
-The first problem solved is how to incentivize people to join a collective. They are directly paid a split of the auction proceeds. 
+The first problem solved is how to incentivize people to join a collective. Assuming someone makes a proposal submission to join that moves to auction, they are directly paid a split of the auction proceeds. 
 
 The next problem is how to make sure ownership stake in the collective is broadly accessible but reflects the will of the community. The community can vote on who has the right to join and take submissions from anyone. Also, anyone can bid on auctions. Furthermore, people can pool their efforts and co-create membership proposals. 
 
-The final issue is how to ensure that collective membership isn't solely curated by whoever can deploy the most capital to win the auction. Winning bids get 1 governance token, and the membership proposal author(s) gets another. The protocol also enables groups of people to party-bid auctions. 
+The final issue is how to ensure that collective membership isn't decided by whoever can deploy the most capital to win the auction. Winning bids get 1 governance token, and the membership proposal author(s) gets another. The protocol also enables groups of people to party-bid auctions. 
 
 
-Thanks to Danny, John, Danny, Chris and the many others who helped formulate this revolution,
+Thanks to Danny, John, Danny, Jamal, Chris and the many others who helped formulate this revolution,
 
 Let's free culture from the grips of corporations and enable collectives to live long and prosper, finally empowered to affect positive change in the realm of real materials. 
 
