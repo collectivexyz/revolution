@@ -21,7 +21,7 @@ During the auction period, each day, for the 15th until the 21st day, one submis
 
 After the initial cold-start, the voting, submission, and auction periods will perpetually operate in tandem, feeding into each other. 
 
-The first problem solved is how to incentivize people to join the collective. We can pay them to. 
+The first problem solved is how to incentivize people to join a collective. They are directly paid a split of the auction proceeds. 
 
 The next problem is how to make sure ownership stake in the collective is broadly accessible but reflects the will of the community. The community can vote on who has the right to join and take submissions from anyone. Also, anyone can bid on auctions. Furthermore, people can pool their efforts and co-create membership proposals. 
 
@@ -30,6 +30,6 @@ The final issue is how to ensure that collective membership isn't solely curated
 
 Thanks to Danny, John, Danny, Chris and the many others who helped formulate this revolution,
 
-Let's free culture from the grips of corporations and enable collectives to live long and prosper, finally empowered to effect positive change in the realm of real materials. 
+Let's free culture from the grips of corporations and enable collectives to live long and prosper, finally empowered to affect positive change in the realm of real materials. 
 
 
