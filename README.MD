@@ -17,7 +17,7 @@ On January 1st, 2023, the first collective will launch. For 7 days, a submission
 
 After the first membership submission period ends 7 days later, another submission period begins. At the same time, for the next 7 days, the founding group who controls initial governance will collectively decide on the top submissions during a voting period. At the conclusion of the second week, the top submissions will move to a 7 day auction period, and the newly submitted proposals will move to the voting period. 
 
-During the auction period, each day, for the 15th until the 21st day, one submission of the top submissions and it's associated art piece will be publicly auctioned off to the highest bidder. A cut of the winning bid amount will go to the submitter, and the rest to the collective. Both the winning bidder and the submitter will receive equal shares in collective governance represented as a unique piece of art, their community identity. 
+During the auction period, each day, for the 15th until the 21st day, one submission of the top submissions and it's associated art piece will be publicly auctioned off to the highest bidder. The winning bidder will receive one share in collective governance represented as a unique piece of culture, their community identity, as well as the art piece submitted. On the other hand, the submission author can choose a continuous split of 50% of the auction proceeds or a single governance share. The remaining proceeds will go entirely to the collective. 
 
 After the initial cold-start, the voting, submission, and auction periods will perpetually operate in tandem, feeding into each other. 
 
