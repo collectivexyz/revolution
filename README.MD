@@ -6,7 +6,7 @@ The revolution protocol adopts and iterates on some key lessons from the nascent
 
 The goal of revolution is collectively curated ownership distribution that results in an aligned on-chain social graph bootstrapped with capital (both IP and monetary) that is broadly accessible.
 
-How do we enable permissionless collective curation of both energy and people?
+How do we enable permissionless collective curation of both energy and people that is accessible to all?
 
 The revolution protocol consists of three continuously operating paradigms. 
 1. A submission period
