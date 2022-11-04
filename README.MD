@@ -4,7 +4,7 @@
 
 The revolution protocol adopts and iterates on some key lessons from the nascent Internet society created through the Nouns protocol. 
 
-The goal of revolution is collectively curated ownership distribution that results in an aligned on-chain collective bootstrapped with capital (both IP and monetary) that is broadly accessible.
+The goal of revolution is collectively curated ownership distribution over a movement that results in an aligned on-chain collective bootstrapped with capital (both IP and monetary) that is broadly accessible.
 
 How do we enable permissionless collective curation of both energy and people that is accessible to all?
 
