@@ -15,7 +15,7 @@ The revolution protocol consists of three continuously operating paradigms.
 
 On January 1st, 2023, the first collective will launch. For 7 days, a submission box will open for anyone to submit proposals. Think of these proposals as membership applications, at least in the beginning. Proposals will come paired with a piece of culture (think painting, software, song, video, infrastructure, products etc.) signifying unique energy that desires a hand in the revolution.
 
-After the submission period ends 7 days later, another submission period begins. At the same time, for the next 7 days, the founding group who controls initial governance will collectively decide on the top submissions during a voting period. At the conclusion of the voting period, the top submissions will move to a 7 day auction period, and the recently submitted proposals will move to a new voting period. 
+After the submission period ends 7 days later, another submission period begins, as well as a voting period. For the next 7 days, the collective will decide on the top submissions. At the conclusion of the voting period, the top submissions will move to a 7 day auction period.
 
 During the auction period, each day, one submission from the top submissions and it's associated cultural piece will be publicly auctioned off to the highest bidder. The winning bidder will receive one share in collective governance, in the form of a community identity, as well as the cultural piece submitted. 50% of the auction proceeds will go towards the revolution. The purchased submission author can choose a direct ratio between the remaining 50% of auction proceeds and a single governance share. 
 
