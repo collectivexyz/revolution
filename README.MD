@@ -17,7 +17,7 @@ On January 1st, 2023, the first collective will launch. For 7 days, a submission
 
 After the submission period ends 7 days later, another submission period begins, as well as a voting period. For the next 7 days, the collective will decide on the top submissions. At the conclusion of the voting period, the top submissions will move to a 7 day auction period.
 
-During the auction period, each day, one submission from the top submissions and it's associated cultural piece will be publicly auctioned off to the highest bidder. The winning bidder will receive one share in collective governance, in the form of a community identity, as well as the cultural piece submitted. 50% of the auction proceeds will go towards the revolution. The purchased submission author can choose a direct ratio between the remaining 50% of auction proceeds and a single governance share. 
+During the auction period, each day, one submission from the top submissions and it's associated cultural piece will be publicly auctioned off to the highest bidder. The winning bidder will receive one share in collective governance, in the form of a community identity, as well as the cultural piece submitted. 50% of the auction proceeds will go towards the revolution. The purchased submission author can choose a payout by deciding on a direct ratio split between the remaining 50% of auction proceeds and a single governance share. 
 
 After the initial cold-start, the voting, submission, and auction periods will perpetually operate in tandem, feeding into each other. 
 
