@@ -23,7 +23,7 @@ During the auction period, one submission from the top submissions and it's asso
 
 In order to ensure money is not the only thing that gates ownership in the movement, the community can decide on a ratio of auction proceeds that will go to the winning proposer. We call this parameter "the split". Let's assume the community wants to attract top tier membership in the beginning, so they decide on a split of 30%. 
 
-In this scenario, 70% of the auction proceeds will automatically go to the revolution treasury. The winning bidder also receives 0.7 shares of governance. The proposer who's submission was purchased can then choose a payout from the auction in either hard cash or governance share. 
+In this scenario, 70% of the auction proceeds will automatically go to the revolution treasury. The winning bidder also receives 0.7 shares of governance. The proposer whose submission was purchased can then choose a payout from the auction in either hard cash or governance share. 
 
 They decide a proportion of the remaining 30% of auction proceeds and governance share. So let's say the winning bid was $1 billion. $700 mil would go to the revolution treasury automatically based on the 30% split. The winning proposer would then choose whether they wanted $300 mil cash or 0.3 shares of governance, or any continuum inbetween. Every auction issues the same amount of governance shares no matter the price. 
 
