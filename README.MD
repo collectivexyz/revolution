@@ -4,7 +4,7 @@
 
 The revolution protocol adopts and improves on some key lessons from the Internet society created with the Nouns protocol. 
 
-The goal of revolution is fair ownership distribution over a movement consisting of an aligned group of people who all hold decision making power over the energy of the movement.
+The goal of revolution is fair ownership distribution over a movement where anyone can earn decision making power over the energy of the movement.
 
 ## The protocol
 
