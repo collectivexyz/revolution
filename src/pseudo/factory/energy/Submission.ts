@@ -1,18 +1,25 @@
 export class Submission {
   id: number;
-  author: string;
+  //author(s) of the proposal
+  authors: string[];
+  //ipfs link etc. to a piece of media that can be minted as ERC721
   culturalArtifact: string;
-  description: string;
+  //Satoshi's membership application / Led Zeppelin IV etc.
+  title?: string;
+  //optional descriptive blurb about the proposal
+  description?: string;
 
   constructor(
     id: number,
-    author: string,
+    authors: string[],
     culturalArtifact: string,
-    description: string
+    title?: string,
+    description?: string
   ) {
     this.id = id;
-    this.author = author;
+    this.authors = authors;
     this.culturalArtifact = culturalArtifact;
-    this.description = description;
+    this.title = title || "";
+    this.description = description || "";
   }
 }

@@ -23,7 +23,6 @@ class Revolution {
     What is the rallying cry for this movement?
 
   */
-
   public mission?: string;
 
   /*
@@ -40,6 +39,9 @@ class Revolution {
   public submissionPeriods: SubmissionPeriod[];
   public votingPeriods: VotingPeriod[];
 
+  //represents the currently queued configurations of the three periods
+  //that will be used to create the next period of each type
+  //is this the best way to do this?
   public submissionPeriodConfig: SubmissionPeriodConfig;
   public votingPeriodConfig: VotingPeriodConfig;
   public auctionPeriodConfig: AuctionPeriodConfig;
@@ -72,7 +74,9 @@ class Revolution {
     this.submissionPeriods.push(
       new SubmissionPeriod(
         this.submissionPeriodConfig.durationDays,
-        this.submissionPeriodConfig.strategyAddress
+        0,
+        this.submissionPeriodConfig.oneSubmissionPerAddress,
+        this.submissionPeriodConfig.mandateDescription
       )
     );
   }
@@ -84,7 +88,6 @@ class Revolution {
     if (this.submissionPeriods.length === 0) {
       throw new Error("Revolution has not started");
     }
-
 
     /*
 
@@ -127,6 +130,7 @@ class Revolution {
         new AuctionPeriod(
           this.auctionPeriodConfig.durationDays,
           topSubmissions,
+          //not sold on this way to increment IDs of auction periods tbh
           this.auctionPeriods.length
         )
       );
@@ -151,6 +155,7 @@ class Revolution {
           this.votingPeriodConfig.strategyAddress,
           currentSubmissions,
           this.votingPeriodConfig.numWinners,
+          //not sold on this way to increment IDs of voting periods tbh
           this.votingPeriods.length
         )
       );
@@ -159,8 +164,10 @@ class Revolution {
       this.submissionPeriods.push(
         new SubmissionPeriod(
           this.submissionPeriodConfig.durationDays,
-          this.submissionPeriodConfig.strategyAddress,
-          this.submissionPeriods.length
+          //not sold on this way to increment IDs of submission periods tbh
+          this.submissionPeriods.length,
+          this.submissionPeriodConfig.oneSubmissionPerAddress,
+          this.submissionPeriodConfig.mandateDescription
         )
       );
     }
@@ -170,5 +177,20 @@ class Revolution {
   //decided upon by a multi-choice collective measure
   protected updateMission(mission: string) {
     this.mission = mission;
+  }
+
+  //decided upon by a collective measure
+  //many many dynamics and theories around this
+  //for now, just a simple function
+  protected updateSplitRate(splitRate: number) {
+    this.splitRate = splitRate;
+  }
+
+  //decided upon by a collective measure
+  protected updateSubmissionPeriodConfig(
+    submissionPeriodConfig: SubmissionPeriodConfig
+  ) {
+    //should we allow durationDays to be updated?
+    this.submissionPeriodConfig = submissionPeriodConfig;
   }
 }

@@ -10,8 +10,8 @@ export interface AuctionPeriodConfig extends BasePeriodConfig {
 }
 
 export interface SubmissionPeriodConfig extends BasePeriodConfig {
-  strategyAddress: string;
   mandateDescription: string;
+  oneSubmissionPerAddress: boolean;
 }
 
 export interface VotingPeriodConfig extends BasePeriodConfig {
