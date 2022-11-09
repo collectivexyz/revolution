@@ -18,7 +18,23 @@ import { VotingPeriod } from "../periods/VotingPeriod";
 */
 
 class Revolution {
+  /*
+
+    What is the rallying cry for this movement?
+
+  */
+
   public mission?: string;
+
+  /*
+
+    The proportion of the auction proceeds that go to the proposer
+    A number between 0 and 1 (inclusive)
+    For example, a split rate of 0.7 indicates that 70% of an auction's
+    proceeds will go to the proposer (in the form of governance stake OR cash)
+
+  */
+  public splitRate?: number;
 
   public auctionPeriods: AuctionPeriod[];
   public submissionPeriods: SubmissionPeriod[];
@@ -69,6 +85,19 @@ class Revolution {
       throw new Error("Revolution has not started");
     }
 
+
+    /*
+
+      Generally a bit worried about the order of these functions
+      For example, what if a submission period ends and a new one is created
+      but the voting period has not ended yet?
+      Or, what if a voting period ends and a new one is created
+      but the auction period has not ended yet?
+      Or what if there's a reentrancy and a submission period is graduated to voting
+      before the current queued voting period is graduated to auction?
+
+    */
+
     //move votes to auction period
     this.graduateVotes();
 
@@ -80,11 +109,12 @@ class Revolution {
     //require votes to exist
     if (this.votingPeriods.length === 0) return;
 
-    const votingPeriod = this.votingPeriods[this.votingPeriods.length - 1];
+    const currentVotingPeriod =
+      this.votingPeriods[this.votingPeriods.length - 1];
 
     //continue if voting period has ended
-    if (votingPeriod.endDate < new Date()) {
-      const weightedChoices = votingPeriod.choices;
+    if (currentVotingPeriod.endDate < new Date()) {
+      const weightedChoices = currentVotingPeriod.choices;
 
       //get top submissions
       const topSubmissions = weightedChoices
