@@ -138,7 +138,8 @@ class Revolution {
           submission,
           //duration of an individual auction in seconds
           //based on number of auctions per day
-          Math.floor(SECONDS_IN_DAY / this.auctionPeriodConfig.auctionsPerDay)
+          Math.floor(SECONDS_IN_DAY / this.auctionPeriodConfig.auctionsPerDay),
+          this.auctionPeriodConfig.initialOutputRate
         );
       });
 

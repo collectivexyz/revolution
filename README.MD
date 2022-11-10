@@ -8,6 +8,11 @@ The goal of revolution is fair ownership distribution over a movement where anyo
 
 ## The protocol
 
+The protocol operates under these three goals:
+1. Be broadly accessible for people
+2. Balance the scales between capital and reputation/outcomes
+3. Inflationary governance
+
 How do we enable permissionless collective curation of both energy and people that is accessible to all?
 
 The revolution protocol consists of three continuously operating paradigms. 

@@ -11,19 +11,23 @@ export class Bid {
   public auctionId: number;
 
   //list of all contributors to the bid
+  //does this confuddle the whole mechanism?
   public participants: { address: string; amount: number }[];
 
   //the rate at which the bid capital is split between the proposer and the treasury
-  public splitRate: number;
+  //helps scope groups of bidders
+  //is the amount that goes to the proposer
+  //or the amount the bidder is giving to the proposer
+  public creatorRate: number;
 
   //constructor
   public constructor(
     auctionId: number,
     components: { address: string; amount: number }[],
-    splitRate: number
+    creatorRate: number
   ) {
     this.auctionId = auctionId;
     this.participants = components;
-    this.splitRate = splitRate;
+    this.creatorRate = creatorRate;
   }
 }

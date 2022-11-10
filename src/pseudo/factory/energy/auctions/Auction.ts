@@ -40,8 +40,8 @@ export class Auction {
     auctionItem: Submission,
     auctionDuration: number,
     //this ideally should be optional and default to accumulating the proceeds
-    //to the treasury (i.e. outputRate = 0)
-    outputRate: number = 0
+    //to the treasury (i.e. outputRate = 0.2)
+    outputRate: number = 0.2
   ) {
     this.bids = bids;
     this.outputRate = outputRate;
@@ -63,9 +63,9 @@ export class Auction {
   //but ideally they can just default to the output rate being 0 and the auction proceeds
   //automatically?
   /*
-   PROTECTED BY SUBMISSION AUTHOR
+   PROTECTED BY SUBMISSION AUTHOR POSSIBLY UNDER SOME TIMELOCK PAST WHICH OUTPUT RATE DEFAULTS TO 0
   */
-  protected startAuction(submissionId: number, outputRate?: number) {
+  protected startAuction(outputRate?: number) {
     //require no bids to exist
     if (this.bids.length > 0) {
       throw new Error("Auction already started");
@@ -99,9 +99,12 @@ export class Auction {
 
     //issue governance shares to winning bid and proposer
     // await this.issueShares(
+    //   //according to their contribution to the winning bid pool and the split rate
     //   winningBid.participants,
+    //   //according to the split rate and output rate
     //   this.auctionItem.proposer,
-    //   this.outputRate
+    //   this.outputRate,
+    //   winningBid.splitRate
     // );
     //distribute cash proceeds
   }
