@@ -8,9 +8,9 @@ The goal of revolution is fair ownership distribution over a movement where anyo
 
 ## The protocol
 
-The protocol operates under these three goals:
-1. Be broadly accessible for people
-2. Balance the scales between capital and reputation/outcomes
+The protocol operates under these three tenets:
+1. Broadly accessible for people
+2. Balances scale between capital and reputation/outcomes
 3. Inflationary governance
 
 How do we enable permissionless collective curation of aligned people and energy that is accessible to all?
