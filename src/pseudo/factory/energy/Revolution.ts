@@ -6,6 +6,7 @@ import {
 import { AuctionPeriod } from "../periods/AuctionPeriod";
 import { SubmissionPeriod } from "../periods/SubmissionPeriod";
 import { VotingPeriod } from "../periods/VotingPeriod";
+import { Auction } from "./auctions/Auction";
 
 /*
 
@@ -16,6 +17,9 @@ import { VotingPeriod } from "../periods/VotingPeriod";
   to cycle through the periods, and finally to start or end the revolution.
 
 */
+
+//num seconds in a day
+const SECONDS_IN_DAY = 86_400;
 
 class Revolution {
   /*
@@ -125,11 +129,24 @@ class Revolution {
         //what happens for ties?
         .slice(0, this.votingPeriodConfig.numWinners);
 
+      //create auctions out of topSubmissions
+      const auctions = topSubmissions.map((submission) => {
+        return new Auction(
+          [],
+          //todo allow multiple auctions packaged into 1 auction
+          //FOR ACCESSIBLITY
+          submission,
+          //duration of an individual auction in seconds
+          //based on number of auctions per day
+          Math.floor(SECONDS_IN_DAY / this.auctionPeriodConfig.auctionsPerDay)
+        );
+      });
+
       //move top submissions to auction period
       this.auctionPeriods.push(
         new AuctionPeriod(
           this.auctionPeriodConfig.durationDays,
-          topSubmissions,
+          auctions,
           //not sold on this way to increment IDs of auction periods tbh
           this.auctionPeriods.length
         )

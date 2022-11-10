@@ -1,4 +1,4 @@
-import { Auction } from "../energy/Auction";
+import { Auction } from "../energy/auctions/Auction";
 import { Submission } from "../energy/Submission";
 
 interface BasePeriodConfig {

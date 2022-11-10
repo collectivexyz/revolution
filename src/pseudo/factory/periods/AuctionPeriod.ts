@@ -1,4 +1,4 @@
-import { Auction } from "../energy/Auction";
+import { Auction } from "../energy/auctions/Auction";
 
 export class AuctionPeriod {
   public durationDays: number;
