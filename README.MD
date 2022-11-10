@@ -13,7 +13,7 @@ The protocol operates under these three goals:
 2. Balance the scales between capital and reputation/outcomes
 3. Inflationary governance
 
-How do we enable permissionless collective curation of both energy and people that is accessible to all?
+How do we enable permissionless collective curation of aligned people and energy that is accessible to all?
 
 The revolution protocol consists of three continuously operating paradigms. 
 1. A submission period
