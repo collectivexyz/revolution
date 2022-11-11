@@ -20,7 +20,7 @@ The revolution protocol consists of three continuously operating paradigms.
 2. A voting period
 3. An auction period
 
-Basically, people submit proposals paired with a cultural artifact, the community votes on top proposals, top proposals go to auction, and the winning bidder receives the cultural artifiact and governance shares. Auction proceeds go to the proposal creator (either cash or governance) and to the community treasury.
+Basically, people submit proposals paired with a cultural artifact, the community votes on top proposals, top proposals go to auction, and the winning bidder receives the cultural artifact and governance shares. Auction proceeds go to the proposal creator (either cash or governance) and to the community treasury.
 
 Let's assume that on January 1st, 2023, the first revolution will begin. A **submission** box will open for anyone to submit proposals to be part of the movement. Think of these proposals as membership applications to the revolution, at least in the beginning. People who want to give their time and energy to the movement will be incentivized to submit. Proposals will come paired with a piece of culture (think painting, software, song, video, infrastructure, products, art etc.) signifying the unique energy that desires a hand in the movement.
 
