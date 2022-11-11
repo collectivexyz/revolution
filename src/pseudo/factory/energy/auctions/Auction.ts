@@ -25,12 +25,12 @@ export class Auction {
   public startDate?: Date;
 
   /*
-    outputRate is the **cash** proportion of the auction proceeds 
+    entropyRate is the **cash** proportion of the auction proceeds 
     that go out of the system to the proposer. 
     defaults to 0, meaning 100% of cash proceeds go to the treasury
     and the proposer receives 0 cash and full governance stake. 
   */
-  public outputRate: number;
+  public entropyRate: number;
 
   public auctionItem: Submission;
 
@@ -39,12 +39,12 @@ export class Auction {
     bids: Bid[],
     auctionItem: Submission,
     auctionDuration: number,
-    //this ideally should be optional and default to accumulating the proceeds
-    //to the treasury (i.e. outputRate = 0.2)
-    outputRate: number = 0.2
+    //this ideally should be optional and default to accumulating all
+    //the proceeds to the treasury (i.e. entropyRate = 0)
+    entropyRate: number = 0
   ) {
     this.bids = bids;
-    this.outputRate = outputRate;
+    this.entropyRate = entropyRate;
     this.auctionItem = auctionItem;
     this.auctionDuration = auctionDuration;
   }
@@ -54,6 +54,7 @@ export class Auction {
   //might just result in dominant pools of people
   //but how to balance w/ the fact that people might want to
   //bid in a way that is not dominated by a single entity / party bid for accessiblity
+  //creation of bidding pools etc. poses issue
   public addBid(bid: Bid) {
     this.bids.push(bid);
   }
@@ -65,14 +66,16 @@ export class Auction {
   /*
    PROTECTED BY SUBMISSION AUTHOR POSSIBLY UNDER SOME TIMELOCK PAST WHICH OUTPUT RATE DEFAULTS TO 0
   */
-  protected startAuction(outputRate?: number) {
+  protected startAuction(entropyRate?: number) {
     //require no bids to exist
     if (this.bids.length > 0) {
       throw new Error("Auction already started");
     }
 
-    //set the output rate
-    this.outputRate = outputRate || 0;
+    //set the output rate to specified rate (from proposer)
+    //or the defaultEntropyRate from revolution params
+    //or 0 if no rate is specified
+    this.entropyRate = entropyRate || this.entropyRate || 0;
     //set the start date
     this.startDate = new Date();
     //set the end date
@@ -103,7 +106,7 @@ export class Auction {
     //   winningBid.participants,
     //   //according to the split rate and output rate
     //   this.auctionItem.proposer,
-    //   this.outputRate,
+    //   this.entropyRate,
     //   winningBid.splitRate
     // );
     //distribute cash proceeds

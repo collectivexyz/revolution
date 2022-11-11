@@ -8,6 +8,7 @@
 
 export class Bid {
   //the auction being bid on
+  //is this necessary?
   public auctionId: number;
 
   //list of all contributors to the bid
@@ -18,6 +19,9 @@ export class Bid {
   //helps scope groups of bidders
   //is the amount that goes to the proposer
   //or the amount the bidder is giving to the proposer
+  //should probably be specified first
+  //if bids are to be created and then contributed to
+  //or should they be open pools of money
   public creatorRate: number;
 
   //constructor

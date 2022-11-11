@@ -60,6 +60,8 @@ class Revolution {
   */
   public defaultEntropyRate?: number;
 
+  //automatically populated by inbound submissions
+  //and propogated up the revolution chain by the cycleRevolution function
   public auctionPeriods: AuctionPeriod[];
   public submissionPeriods: SubmissionPeriod[];
   public votingPeriods: VotingPeriod[];
@@ -67,6 +69,7 @@ class Revolution {
   //represents the currently queued configurations of the three periods
   //that will be used to create the next period of each type
   //is this the best way to do this?
+  //how can we simplify but let the collective set the parameters of the revolution?
   public submissionPeriodConfig: SubmissionPeriodConfig;
   public votingPeriodConfig: VotingPeriodConfig;
   public auctionPeriodConfig: AuctionPeriodConfig;
@@ -95,7 +98,7 @@ class Revolution {
   }
 
   //initiate revolution
-  public startaRevolution() {
+  public lightAFire() {
     //require no submissions to exist
     if (this.submissionPeriods.length > 0) {
       throw new Error("Revolution already initiated");
@@ -131,6 +134,8 @@ class Revolution {
 
     */
 
+    //should we separate these into two public functions? in case one gets stuck/reverts?
+
     //move votes to auction period
     this.graduateVotes();
 
@@ -142,6 +147,8 @@ class Revolution {
     //require votes to exist
     if (this.votingPeriods.length === 0) return;
 
+    //probably need some protections to make sure voting periods don't get stuck
+    //if they don't end for some reason / another gets added on top of them
     const currentVotingPeriod =
       this.votingPeriods[this.votingPeriods.length - 1];
 
@@ -165,7 +172,7 @@ class Revolution {
           //duration of an individual auction in seconds
           //based on number of auctions per day
           Math.floor(SECONDS_IN_DAY / this.auctionPeriodConfig.auctionsPerDay),
-          this.auctionPeriodConfig.initialOutputRate
+          this.defaultEntropyRate
         );
       });
 

@@ -7,7 +7,7 @@ interface BasePeriodConfig {
 
 export interface AuctionPeriodConfig extends BasePeriodConfig {
   auctionsPerDay: number;
-  initialOutputRate: number;
+  initialEntropyRate: number;
 }
 
 export interface SubmissionPeriodConfig extends BasePeriodConfig {
