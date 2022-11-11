@@ -7,12 +7,10 @@ interface BasePeriodConfig {
 
 export interface AuctionPeriodConfig extends BasePeriodConfig {
   auctionsPerDay: number;
-  initialEntropyRate: number;
 }
 
 export interface SubmissionPeriodConfig extends BasePeriodConfig {
   mandateDescription: string;
-  oneSubmissionPerAddress: boolean;
 }
 
 export interface VotingPeriodConfig extends BasePeriodConfig {

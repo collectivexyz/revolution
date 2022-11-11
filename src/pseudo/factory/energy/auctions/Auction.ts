@@ -10,7 +10,10 @@ import { Bid } from "./Bid";
     according to their share of the split parameter. Upon auction termination, 
     the winning submission author(s) should be able to withdraw their capital 
     and/or governance shares. Additionally, the winning bidder(s) should be able 
-    specify a split rate in the same way as the winning submission author(s).
+    specify a creator rate in the same way as the winning submission author(s).
+
+    related:
+    https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol
 
 */
 
@@ -34,11 +37,19 @@ export class Auction {
 
   public auctionItem: Submission;
 
+  public revolutionEnergyWeight: number;
+
+  public minCreatorRate: number;
+
+  public settled: boolean;
+
   //constructor
   public constructor(
     bids: Bid[],
     auctionItem: Submission,
     auctionDuration: number,
+    revolutionEnergyWeight: number,
+    minCreatorRate: number = 0,
     //this ideally should be optional and default to accumulating all
     //the proceeds to the treasury (i.e. entropyRate = 0)
     entropyRate: number = 0
@@ -47,6 +58,11 @@ export class Auction {
     this.entropyRate = entropyRate;
     this.auctionItem = auctionItem;
     this.auctionDuration = auctionDuration;
+
+    this.revolutionEnergyWeight = revolutionEnergyWeight;
+    this.minCreatorRate = minCreatorRate;
+
+    this.settled = false;
   }
 
   //add a bid to the auction
@@ -56,15 +72,25 @@ export class Auction {
   //bid in a way that is not dominated by a single entity / party bid for accessiblity
   //creation of bidding pools etc. poses issue
   public addBid(bid: Bid) {
+    //ensure bid.creatorRate is within minCreatorRate and 1
+    if (bid.creatorRate < this.minCreatorRate) {
+      throw new Error("Bid creator rate too low");
+    }
+    if (bid.creatorRate > 1) {
+      throw new Error("Bid creator rate too high");
+    }
+
     this.bids.push(bid);
   }
 
   //tradeoff here
-  //i was thinking that the proposer can start the auction by specifying an output rate
-  //but ideally they can just default to the output rate being 0 and the auction proceeds
+  //i was thinking that the proposer can start the auction by specifying an entropy rate
+  //but ideally they can just default to the entropy rate set by dao and the auction proceeds
   //automatically?
+  //how do we make sure auctions run sequentially?
+  //this should route through the auctionPeriod class possibly
   /*
-   PROTECTED BY SUBMISSION AUTHOR POSSIBLY UNDER SOME TIMELOCK PAST WHICH OUTPUT RATE DEFAULTS TO 0
+   PROTECTED BY SUBMISSION AUTHOR POSSIBLY UNDER SOME TIMELOCK PAST WHICH ENTROPY RATE DEFAULTS TO DAO PARAMETER
   */
   protected startAuction(entropyRate?: number) {
     //require no bids to exist
@@ -72,7 +98,7 @@ export class Auction {
       throw new Error("Auction already started");
     }
 
-    //set the output rate to specified rate (from proposer)
+    //set the entropy rate to specified rate (from proposer)
     //or the defaultEntropyRate from revolution params
     //or 0 if no rate is specified
     this.entropyRate = entropyRate || this.entropyRate || 0;
@@ -102,14 +128,18 @@ export class Auction {
 
     //issue governance shares to winning bid and proposer
     // await this.issueShares(
-    //   //according to their contribution to the winning bid pool and the split rate
+    //   //according to their contribution to the winning bid pool and the creator rate
     //   winningBid.participants,
-    //   //according to the split rate and output rate
+    //   //according to the creator rate and entropy rate
     //   this.auctionItem.proposer,
     //   this.entropyRate,
-    //   winningBid.splitRate
+    //   winningBid.creatorRate
     // );
+    //major scary place here w/reentrancy, distributing gov shares before sending cash etc.
     //distribute cash proceeds
+
+    //set auction as settled
+    this.settled = true;
   }
 
   //get the winning bid
@@ -118,10 +148,29 @@ export class Auction {
     //sort bids by amount
     const sortedBids = this.bids.sort(
       (a, b) =>
-        b.participants.reduce((a, b) => a + b.amount, 0) -
-        a.participants.reduce((a, b) => a + b.amount, 0)
+        this.maximizer(b) - this.maximizer(a) ||
+        //if there is a tie, maximize by the number of participants (open to sybil)
+        b.participants.length - a.participants.length
     );
-    //return the first bid
+    //return winning bid
     return sortedBids[0];
+  }
+
+  private maximizer(bid: Bid) {
+    //find the value of the winning bid according to the revolution energy weight
+    //and the entropy rate
+    const capital_weight = this.revolutionEnergyWeight;
+    const creator_weight = 1 - this.revolutionEnergyWeight;
+
+    const bidValueEth = bid.participants.reduce((a, b) => a + b.amount, 0);
+
+    const daosEnergy = bidValueEth * (1 - this.entropyRate);
+
+    const creatorsEnergy = bidValueEth * bid.creatorRate;
+
+    const bidValue =
+      capital_weight * daosEnergy + creator_weight * creatorsEnergy;
+
+    return bidValue;
   }
 }

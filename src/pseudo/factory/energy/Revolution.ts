@@ -60,6 +60,21 @@ class Revolution {
   */
   public defaultEntropyRate?: number;
 
+  /*
+
+  This weight parameter is used in the maximizing function of the auction.
+  It is the weight assigned to the revolutions energy accumulated vs. the creator's.
+  A higher weight means that the revolution's energy is more important than the creator's
+  when determining the winner of the auction.
+  In order to get the weight parameter for the creator, we can simply subtract
+  the weight parameter for the revolution from 1. Assume the weight parameter
+  for the revolution is w_r, then the weight parameter for the creator is 1 - w_r.
+  The weight parameter for the revolution is a number between 0 and 1 (inclusive).
+  The weight parameter for the creator is a number between 0 and 1 (inclusive).
+
+  */
+  public revolutionEnergyWeight: number;
+
   //automatically populated by inbound submissions
   //and propogated up the revolution chain by the cycleRevolution function
   public auctionPeriods: AuctionPeriod[];
@@ -81,8 +96,20 @@ class Revolution {
     auctionPeriodConfig: AuctionPeriodConfig,
     minimumCreatorRate: number,
     defaultEntropyRate: number,
+    revolutionEnergyWeight: number,
     mission: string = "Make the world a better place"
   ) {
+    //require rates to be between 0 and 1
+    if (minimumCreatorRate < 0 || minimumCreatorRate > 1) {
+      throw new Error("Minimum creator rate must be between 0 and 1");
+    }
+    if (defaultEntropyRate < 0 || defaultEntropyRate > 1) {
+      throw new Error("Default entropy rate must be between 0 and 1");
+    }
+    if (revolutionEnergyWeight < 0 || revolutionEnergyWeight > 1) {
+      throw new Error("Revolution energy weight must be between 0 and 1");
+    }
+
     this.auctionPeriods = [];
     this.submissionPeriods = [];
     this.votingPeriods = [];
@@ -95,6 +122,7 @@ class Revolution {
 
     this.minCreatorRate = minimumCreatorRate;
     this.defaultEntropyRate = defaultEntropyRate;
+    this.revolutionEnergyWeight = revolutionEnergyWeight;
   }
 
   //initiate revolution
@@ -108,7 +136,6 @@ class Revolution {
       new SubmissionPeriod(
         this.submissionPeriodConfig.durationDays,
         0,
-        this.submissionPeriodConfig.oneSubmissionPerAddress,
         this.submissionPeriodConfig.mandateDescription
       )
     );
@@ -172,6 +199,8 @@ class Revolution {
           //duration of an individual auction in seconds
           //based on number of auctions per day
           Math.floor(SECONDS_IN_DAY / this.auctionPeriodConfig.auctionsPerDay),
+          this.revolutionEnergyWeight,
+          this.minCreatorRate,
           this.defaultEntropyRate
         );
       });
@@ -217,7 +246,6 @@ class Revolution {
           this.submissionPeriodConfig.durationDays,
           //not sold on this way to increment IDs of submission periods tbh
           this.submissionPeriods.length,
-          this.submissionPeriodConfig.oneSubmissionPerAddress,
           this.submissionPeriodConfig.mandateDescription
         )
       );
@@ -236,7 +264,12 @@ class Revolution {
   //a high min creator rate incentivizes creators with
   //either cash or governance stake
   //ONLY THE COLLECTIVE CAN VOTE TO CHANGE THIS
-  protected updateCreatorRate(rate: number) {
+  protected updateMinCreatorRate(rate: number) {
+    //require rate to be between 0 and 1
+    if (rate < 0 || rate > 1) {
+      throw new Error("Rate must be between 0 and 1");
+    }
+
     this.minCreatorRate = rate;
   }
 
@@ -247,6 +280,11 @@ class Revolution {
   //and diverse submissions by paying them cash for doing so
   //ONLY THE COLLECTIVE CAN VOTE TO CHANGE THIS
   protected updateDefaultEntropyRate(rate: number) {
+    //require rate to be between 0 and 1
+    if (rate < 0 || rate > 1) {
+      throw new Error("Entropy rate must be between 0 and 1");
+    }
+
     this.defaultEntropyRate = rate;
   }
 
@@ -256,5 +294,15 @@ class Revolution {
   ) {
     //should we allow durationDays to be updated?
     this.submissionPeriodConfig = submissionPeriodConfig;
+  }
+
+  //if this is large, creators get less, bidders + DAO get more
+  protected updateRevolutionEnergyWeight(weight: number) {
+    //ensure weight is between 0 and 1
+    if (weight < 0 || weight > 1) {
+      throw new Error("Weight must be between 0 and 1");
+    }
+
+    this.revolutionEnergyWeight = weight;
   }
 }

@@ -23,7 +23,6 @@ export class SubmissionPeriod {
   public constructor(
     durationDays: number,
     id?: number,
-    oneSubmissionPerAddress?: boolean,
     mandateDescription?: string
   ) {
     this.submissions = [];
@@ -34,7 +33,6 @@ export class SubmissionPeriod {
     this.config = {
       durationDays,
       //optional configs
-      oneSubmissionPerAddress: oneSubmissionPerAddress || false,
       mandateDescription: mandateDescription || "",
     };
   }
@@ -62,28 +60,8 @@ export class SubmissionPeriod {
       description: description || "",
     };
 
-    //gate submissions according to config
-    this.gateSubmission(newSubmission);
-
     //add submission to submissions array
     this.submissions.push(newSubmission);
-  }
-
-  //core tenet of Revolution is accessibility
-  //need to be judicious about how we gate submissions + what configs we allow
-  private gateSubmission(newSubmission: Submission) {
-    if (this.config.oneSubmissionPerAddress) {
-      if (
-        !!this.submissions.find(
-          (existingSub) =>
-            !!newSubmission.authors.filter(
-              (author) => existingSub.authors.indexOf(author) !== -1
-            )?.length
-        )
-      ) {
-        throw new Error("Author already submitted");
-      }
-    }
   }
 
   public addGroupSubmission() {}
