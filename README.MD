@@ -55,6 +55,6 @@ The founders and some prominent community members come together in a founding co
 These submissions move to an auction, where they are auctioned off to the public. Other community members who maybe didn't have time or skills to come up with a good proposal are able to bid on these auctions. The highest bidder (or group of bidders) wins the original copy of the submitted video and governance stake in the Yes Theory movement. The proposer likewise receives part of the auction proceeds or governance stake. The cycle repeats. What you end up with is a curated group of Yes Theory supporters with direct say over how a large base of capital is used to build out the Yes Theory revolution. Anyone with governance stake can decide on how the movement deploys this accumulated energy. 
 
 
-Thanks to Danny, John, Danny, Alan, Wesley, Jamal, Chris, Steven, Tom, Burke, Al, Wojciech, Hamza, Adam, Christian, Justin, Seth, CT, Arman, Gami, Ben, Elad, Goldy, SQ, Wiz and the many others who helped start this revolution.
+Thanks to Danny, John, Danny, Alan, Wesley, Jamal, Chris, Steven, Tom, Burke, Al, Wojciech, Hamza, Adam, Christian, Justin, Seth, CT, Arman, Gami, Ben, Elad, Goldy, SQ, Wiz, Seneca, Sasquatch and the many others who helped start this revolution.
 
-Let's free culture from the grips of corporations and enable collectives to live long and prosper, empowered to affect positive change in the realm of real materials. 
+Let's free culture from the grips of corporations and enable movements to live long and prosper, empowered to affect positive change in the realm of real materials. 
