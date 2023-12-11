@@ -1,6 +1,8 @@
 
 # the Revolution protocol ⌐◨-◨
 
+*note ignore the src / pseudo code in this repo - it is incredibly outdated and not reflective of the current state of the protocol*
+
 Revolution is a set of contracts that improve on [Nouns DAO](https://github.com/nounsDAO/nouns-monorepo). Nouns is a generative avatar collective that auctions off one ERC721, every day, forever. 100% of the proceeds of each auction (the winning bid) go into a shared treasury, and owning an NFT gets you 1 vote over the treasury.
 
 <img width="377" alt="noun" src="https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/readme-img/noun.png">
